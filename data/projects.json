@@ -1,0 +1,6 @@
+{
+    "categories":  [
+                       { "key": "collaboration", "label": "Collaborations", "items": [] },
+                       { "key": "curatorial", "label": "Curatorial Projects", "items": [] }
+                   ]
+}

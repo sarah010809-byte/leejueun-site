@@ -1,0 +1,6 @@
+{
+    "types":  [
+                  { "key": "solo", "label": "Solo", "items": [] },
+                  { "key": "group", "label": "Group", "items": [] }
+              ]
+}

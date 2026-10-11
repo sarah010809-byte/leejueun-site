@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lee Jueun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">LEE JUEUN</a>
+    <!-- 메뉴는 script.js 에서 자동 생성됩니다 -->
+    <nav class="nav" id="nav"></nav>
+    <div class="header-right">
+      <div class="lang-toggle">
+        <button id="btn-ko" class="active">Kr</button>
+        <span>/</span>
+        <button id="btn-en">En</button>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- 풀스크린 대표작 (관리자 페이지 '작품'에서 '대표 작품' 체크한 작품이 표시됩니다) -->
+  <section class="hero" id="hero">
+  </section>
+
+  <!-- ▼ 홈 스크롤 섹션 보관: 클라이언트 요청으로 잠시 꺼둠.
+       다시 켜려면 아래 <template> 여는/닫는 태그 두 줄만 지우면 됩니다. -->
+  <template id="home-sections-archive">
+  <!-- 작품 미리보기 -->
+  <section class="section">
+    <div class="section-head"><h2>Works</h2></div>
+    <div id="home-works"></div>
+    <a class="view-all" href="works.html">View all →</a>
+  </section>
+
+  <!-- 전시 미리보기: 스크롤하면 고정된 화면에서 전시들이 오른쪽→왼쪽으로 흐름 -->
+  <section class="exh-scroll" id="exh-scroll">
+    <div class="exh-sticky">
+      <div class="section-head"><h2>Exhibitions</h2></div>
+      <div class="exh-track" id="home-exh"></div>
+      <a class="view-all" href="exhibitions.html">View all →</a>
+    </div>
+  </section>
+
+  <!-- 프로젝트 미리보기 -->
+  <section class="section">
+    <div class="section-head"><h2>Projects</h2></div>
+    <div id="home-projects"></div>
+    <a class="view-all" href="projects.html">View all →</a>
+  </section>
+
+  <!-- 글 미리보기 -->
+  <section class="section">
+    <div class="section-head"><h2>Writings</h2></div>
+    <div id="home-writings"></div>
+    <a class="view-all" href="writings.html">View all →</a>
+  </section>
+  </template>
+  <!-- ▲ 홈 스크롤 섹션 보관 끝 -->
+</main>
+
+<footer class="site-footer">
+  <p class="footer-name">LEE JUEUN</p>
+  <div class="footer-icons">
+    <a href="about.html" class="icon-circle" aria-label="Contact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+    </a>
+    <a href="#" id="footer-insta" target="_blank" rel="noopener" class="icon-circle" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.8" fill="currentColor" stroke="none"/></svg>
+    </a>
+  </div>
+  <!-- 푸터 메뉴도 script.js 에서 자동 생성됩니다 -->
+  <nav class="footer-nav" id="footer-nav"></nav>
+  <p class="footer-copy">© 2026 LEE JUEUN. All Rights Reserved.</p>
+</footer>
+
+<script src="script.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "categories": [
+    { "key": "criticism", "label": "Criticism", "items": [] },
+    { "key": "articles", "label": "Articles", "items": [] },
+    { "key": "statements", "label": "Statements", "items": [] }
+  ]
+}
