@@ -1660,6 +1660,103 @@ body:not(.subpage) .site-footer { margin-top: 0; }
 
 img.profile { object-fit: cover; }
 
+/* =====================================================================
+   디자인 리프레시 (갤러리 사이트 참고: 넓은 프레임 · 작은 타이포 · 헤어라인)
+   위 기본 스타일을 덮어씀. 모바일(768px 이하) 규칙은 이 아래에서 다시 적용됨.
+   ===================================================================== */
+:root {
+  --ink: #161616;
+  --ink-soft: #555;
+  --ink-mute: #9a9a9a;
+  --line: #e6e6e6;
+  --fs-xs: 0.78rem;
+  --fs-sm: 0.88rem;
+  --fs-md: 1rem;
+}
+
+/* 좌우 프레임: 화면을 더 넓게 사용 (기존 최대 300px → 최대 72px) */
+body { --hpad: clamp(28px, 4.2vw, 72px); color: var(--ink); }
+
+/* 헤더: 얇고 차분하게, 스크롤 시 헤어라인 */
+.header-inner { padding-top: 20px; padding-bottom: 20px; }
+.logo { font-size: 1.05rem; font-weight: 600; letter-spacing: 0.08em; }
+.nav { gap: 32px; font-size: var(--fs-sm); letter-spacing: 0.03em; margin-right: 36px; }
+.lang-toggle { font-size: var(--fs-sm); }
+.site-header.scrolled { box-shadow: 0 1px 0 var(--line); color: var(--ink); }
+
+/* 메뉴 호버: 투명도 대신 밑줄이 왼쪽에서 그어짐 + 현재 페이지 밑줄 고정 */
+.nav-item > a { position: relative; padding-bottom: 3px; }
+.nav-item > a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 1px; background: currentColor;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.nav a:hover { opacity: 1; }
+.nav-item > a:hover::after,
+.nav-item > a.current::after { transform: scaleX(1); }
+
+/* 서브페이지: 작은 제목 + 좁은 사이드바 → 콘텐츠 영역 확대 */
+.page-layout { gap: clamp(32px, 4vw, 72px); padding-top: 128px; }
+.sidebar { width: 180px; top: 104px; }
+.sidebar h1 {
+  font-size: 1.5rem; font-weight: 500; color: var(--ink);
+  letter-spacing: 0.02em; margin-bottom: 24px;
+}
+.series-nav a { font-size: var(--fs-sm); color: var(--ink-mute); }
+.series-nav a.current-year { color: var(--ink); }
+
+/* 섹션 제목: 가운데 큰 제목 → 왼쪽 작은 제목 + 헤어라인 */
+.section-head { justify-content: flex-start; border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 36px; }
+.section h2, .exh-sticky h2 { font-size: 1.15rem; font-weight: 500; letter-spacing: 0.04em; }
+.series-head { border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 28px; }
+
+/* 그리드: 넓은 화면에서 4열, 위아래 간격 넉넉하게 */
+.grid { gap: 56px 32px; }
+@media (min-width: 1400px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* 캡션: 왼쪽 정렬, 제목 진하게 / 부가정보 연하게 (갤러리 캡션 스타일) */
+#works-content .card, #works-content .card figcaption { text-align: left; }
+#works-content .card .thumb img { object-position: left bottom; }
+.card figcaption { font-size: var(--fs-sm); color: var(--ink-mute); line-height: 1.55; }
+.card figcaption strong { color: var(--ink); font-weight: 500; }
+
+/* 썸네일 호버: 아주 살짝 흐려짐 (제목 밑줄 효과와 함께) */
+.card .thumb img { transition: opacity 0.35s ease; }
+@media (hover: hover) {
+  .card a:hover .thumb img { opacity: 0.82; }
+}
+
+/* 글 목록: 헤어라인 리스트, 호버 시 배경 대신 들여쓰기 */
+.writing-list li { border-bottom-color: var(--line); }
+.writing-list a { padding: 18px 0; transition: padding 0.3s ease; }
+.writing-list a:hover { background: none; padding-left: 8px; }
+
+/* 푸터: 검은 블록 → 흰 배경 + 헤어라인, 좌우 정렬 한 줄 */
+.site-footer {
+  background: #fff; color: var(--ink);
+  border-top: 1px solid var(--line);
+  margin-top: 140px;
+  padding: 36px var(--hpad) 40px;
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 16px 32px; text-align: left;
+}
+.footer-name { color: var(--ink); font-size: var(--fs-sm); font-weight: 600; letter-spacing: 0.08em; margin: 0; }
+.footer-nav { order: 2; margin: 0 0 0 auto; gap: 24px; font-size: var(--fs-xs); }
+.footer-nav a { color: var(--ink-mute); }
+.footer-nav a:hover { color: var(--ink); }
+.footer-icons { order: 3; margin: 0; gap: 8px; }
+.site-footer .icon-circle { border-color: var(--line); color: var(--ink-soft); }
+.site-footer .icon-circle:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.footer-copy { order: 4; flex-basis: 100%; color: var(--ink-mute) !important; font-size: 0.72rem; }
+
+@media (max-width: 768px) {
+  .site-footer { flex-direction: column; align-items: flex-start; padding: 32px 20px; margin-top: 96px; }
+  .footer-nav { margin: 0; padding: 0; justify-content: flex-start; }
+  .sidebar h1 { font-size: 1.4rem; }
+  .grid { gap: 36px 14px; }
+}
+
 /* ===== 모바일 (768px 이하) ===== */
 @media (max-width: 768px) {
   .menu-btn { display: block; }
@@ -1919,4 +2016,10 @@ img.profile { object-fit: cover; }
   .exh-track .home-exh-card:first-child .exh-thumb { aspect-ratio: 4 / 3; }
   /* 모바일: 최근 1개 + 과거 2개만 */
   .exh-track .home-exh-card:nth-child(n+4) { display: none; }
+}
+
+/* 디자인 리프레시: 모바일 마무리 (위 모바일 규칙보다 우선) */
+@media (max-width: 768px) {
+  .sidebar h1 { font-size: 1.5rem; }
+  .footer-nav { padding: 0; }
 }
